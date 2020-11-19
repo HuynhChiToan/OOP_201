@@ -35,14 +35,35 @@ namespace ObjectOrientedProject
         private int _tankSize;
         protected override void serviceEngine()
         {
+       if (needServiceEngine) {
+				Console.WriteLine("On:{0}\t do :{1}\t with Car {2}", this.serviceHistory.listOfServiceEngine.Last()._date, this.serviceHistory.listOfServiceEngine.Last()._log, this.ID);
+				Record newRecord = new Record(new DateTime(), "serviceEngine");
+				this.serviceHistory.addlistOfServiceEngine(newRecord);
+				this.currentKm = 0;
+				this.needServiceEngine = false;
+			}
 
         }
         protected override void serviceTransmission()
         {
+         if (needServiceTransmission) {
+				Console.WriteLine("On:{0}\t do :{1}\t with Car {2}", this.serviceHistory.listOfServiceTransmission.Last()._date, this.serviceHistory.listOfServiceTransmission.Last()._log, this.ID);
+				Record newRecord = new Record(new DateTime(), "serviceTransmission");
+				this.serviceHistory.addlistOfServiceTransmission(newRecord);
+				this.currentKm = 0;
+				this.needServiceTransmission = false;
+			}
 
         }
         protected override void serviceTires()
         {
+        if (needServiceTires) {
+				Console.WriteLine("On:{0}\t do :{1}\t with Car {2}", this.serviceHistory.listOfServiceTire.Last()._date, this.serviceHistory.listOfServiceTire.Last()._log, this.ID);
+				Record newRecord = new Record(new DateTime(), "serviceTires");
+				this.serviceHistory.addlistOfServiceTire(newRecord);
+				this.currentKm = 0;
+				this.needServiceTires = false;
+			}
 
         }
         PickupTruck(bool isOnContract, bool hasInsurance, int rentCost, string brand, int runningDistance, int tankSize) : base(isOnContract, hasInsurance, rentCost, brand, runningDistance)
